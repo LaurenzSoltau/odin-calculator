@@ -121,10 +121,16 @@ function handleNumberInput(e) {
             break;
 
         case activeInputs.FIRST:
+            if (number == "." && operationData.firstNumber.includes(".")) {
+                break;
+            }
             operationData.firstNumber += number;
             break;
 
         case activeInputs.SECOND:
+            if (number == "." && operationData.secondNumber.includes(".")) {
+                break;
+            }
             operationData.secondNumber += number;
             break;
 
