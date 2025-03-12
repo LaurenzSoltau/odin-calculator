@@ -26,6 +26,9 @@ numberButtons.forEach((button) =>
     button.addEventListener("click", handleNumberInput)
 );
 
+const dotButton = document.querySelector("#dot");
+dotButton.addEventListener("click", handleNumberInput);
+
 const operatorButtons = document.querySelectorAll(".operator-button");
 operatorButtons.forEach((button) =>
     button.addEventListener("click", handleOperatorInput)
@@ -48,8 +51,12 @@ deleteButton.addEventListener("click", (e) => {
     if (activeInput == activeInputs.FIRST) {
         let first = operationData.firstNumber;
         if (first < 10) {
-            operationData.firstNumber = 0;
-            activeInput = activeInputs.START_FIRST;
+            if (first.length > 1) {
+                operationData.firstNumber = first[0];
+            } else {
+                operationData.firstNumber = 0;
+                activeInput = activeInputs.START_FIRST;
+            }
         } else {
             operationData.firstNumber = first
                 .split("")
@@ -59,8 +66,12 @@ deleteButton.addEventListener("click", (e) => {
     } else if (activeInput == activeInputs.SECOND) {
         let second = operationData.secondNumber;
         if (second < 10) {
-            operationData.secondNumber = 0;
-            activeInput = activeInputs.START_SECOND;
+            if (second.length > 1) {
+                operationData.secondNumber = second[0];
+            } else {
+                operationData.secondNumber = 0;
+                activeInput = activeInputs.START_SECOND;
+            }
         } else {
             operationData.secondNumber = second
                 .split("")
@@ -186,7 +197,7 @@ function formatNumber(num, decimals) {
     if (Number.isInteger(parseFloat(num))) {
         return num;
     } else {
-        return num.toFixed(decimals);
+        return parseFloat(parseFloat(num).toFixed(decimals));
     }
 }
 

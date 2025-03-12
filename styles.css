@@ -27,7 +27,8 @@ body {
     padding: 24px;
     border: solid black 4px;
     border-radius: 16px;
-    width: 29.8vw;
+    width: 435px;
+    box-shadow: black 4px 4px 12px;
 }
 
 .display {
