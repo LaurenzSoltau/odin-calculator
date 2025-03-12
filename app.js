@@ -190,6 +190,9 @@ function formatDisplayText() {
             text += " " + operationData.secondNumber;
         }
     }
+    if (operationData.firstNumber == ".") {
+        text = "0.";
+    }
     return text;
 }
 
